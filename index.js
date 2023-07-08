@@ -2,6 +2,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors'); // Import the cors middleware
 
 const app = express();
 const port = 3000;
@@ -18,6 +19,9 @@ const transporter = nodemailer.createTransport({
 // Use the body-parser middleware
 app.use(bodyParser.json());
 
+// Enable CORS for all routes
+app.use(cors());
+
 app.post('/send-email', (req, res) => {
   const { recipient, subject, message } = req.body;
 
@@ -32,11 +36,11 @@ app.post('/send-email', (req, res) => {
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      // console.log(error);
-      // res.status(500).send('Error sending email');
+      console.log(error);
+      res.status(500).send('Error sending email');
     } else {
-      // console.log('Email sent: ' + info.response);
-      // res.send('Email sent successfully');
+      console.log('Email sent: ' + info.response);
+      res.send('Email sent successfully');
     }
   });
 });
