@@ -11,8 +11,8 @@ const port = 3000;
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'anonymouslegiontechltd@gmail.com', // Replace with your email address
-    pass: 'caokievtdtbivxob' // Replace with your email password
+    user: 'qdata.app@gmail.com', // Replace with your email address
+    pass: 'vcoktcdfnfswegpk' // Replace with your email password
   }
 });
 
@@ -27,7 +27,7 @@ app.post('/send-email', (req, res) => {
 
   // Configure the email details
   const mailOptions = {
-    from: 'anonymouslegiontechltd@gmail.com', // Replace with your email address
+    from: 'qdata.app@gmail.com', // Replace with your email address
     to: recipient,
     subject: subject,
     html: message
