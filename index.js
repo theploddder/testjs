@@ -27,7 +27,7 @@ app.post('/send-email', (req, res) => {
 
   // Configure the email details
   const mailOptions = {
-    from: 'QDATA <qdata.app@gmail.com>', // Replace with your email address
+    from: '<QDATA>', // Replace with your email address
     to: recipient,
     subject: subject,
     html: message
