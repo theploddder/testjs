@@ -14,7 +14,8 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: 'support@qdata.com.ng', // Replace with your email address
     pass: 'fs?jN8YJ9URvW_*' // Replace with your email password
-  }
+  },
+  socketTimeout: 100000,
 });
 
 // Use the body-parser middleware
