@@ -1,7 +1,6 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
-const path = require('path');
 const cors = require('cors');
 
 const app = express();
@@ -9,9 +8,9 @@ const port = 3000;
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
-  host: "smtp.titan.email",
+  host: 'smtp.titan.email',
   port: 465,
-  secure: true, // Corrected option for secure connection
+  secure: true,
   auth: {
     user: 'support@qdata.com.ng',
     pass: 'fs?jN8YJ9URvW_*'
@@ -23,13 +22,6 @@ app.use(bodyParser.json());
 
 // Enable CORS for all routes
 app.use(cors());
-
-// CORS headers middleware
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // Adjust as needed for security
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
 
 app.post('/send-email', (req, res) => {
   const { recipient, subject, message } = req.body;
@@ -52,14 +44,6 @@ app.post('/send-email', (req, res) => {
       res.send('Email sent successfully');
     }
   });
-});
-
-// Serve static files from the current directory
-app.use(express.static(__dirname));
-
-// Serve index.html as the default file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start the server
