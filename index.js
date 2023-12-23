@@ -10,12 +10,11 @@ const port = 3000;
 const transporter = nodemailer.createTransport({
   host: 'smtp.titan.email',
   port: 465,
-  secure: 'ssl',
+  secure: true,
   auth: {
     user: 'support@qdata.com.ng',
     pass: 'fs?jN8YJ9URvW_*'
-  },
-  logger: true, // Enable logging
+  }
 });
 
 // Use the body-parser middleware
