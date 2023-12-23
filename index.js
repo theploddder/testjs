@@ -17,6 +17,17 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+// Place the transporter.verify() call here, right after creating the transporter
+transporter.verify((error, success) => {
+    if (error) {
+        console.log(error);
+        // Handle errors as needed, e.g., display an error message to the user
+    } else {
+        console.log('Server is ready to send emails');
+    }
+});
+
+
 // Use the body-parser middleware
 app.use(bodyParser.json());
 
