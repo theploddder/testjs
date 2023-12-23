@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: 'support@qdata.com.ng',
     pass: 'fs?jN8YJ9URvW_*'
-  }
+  },
   logger: true, // Enable logging
 });
 
