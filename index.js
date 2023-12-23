@@ -8,19 +8,10 @@ const port = 3000;
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
-  host: 'smtp.titan.email',
-  secure: true, 
-  secureConnection: false,
-  tls: {
-     ciphers: "SSLv3",
-  },
-  requireTLS: true,
-  port: 465,
-  debug: true,
-  connectionTimeout: 10000,
+  service: 'gmail',
   auth: {
-    user: 'support@qdata.com.ng',
-    pass: 'fs?jN8YJ9URvW_*'
+    user: 'qdata.app@gmail.com', // Replace with your email address
+    pass: 'vcoktcdfnfswegpk' // Replace with your email password
   }
 });
 
@@ -35,7 +26,7 @@ app.post('/send-email', (req, res) => {
 
   // Configure the email details
   const mailOptions = {
-    from: 'QDATA <support@qdata.com.ng>',
+    from: 'QDATA <qdata.app@gmail.com>',
     to: recipient,
     subject: subject,
     html: message
