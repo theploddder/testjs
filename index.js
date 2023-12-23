@@ -6,12 +6,14 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// Create a transporter
+// Create a transporter for Titan Email
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.titan.email',
+  port: 465, // Use 587 for STARTTLS
+  secure: true, // Use false for STARTTLS
   auth: {
-    user: 'qdata.app@gmail.com', // Replace with your email address
-    pass: 'vcoktcdfnfswegpk' // Replace with your email password
+    user: 'support@qdata.com.ng', // Replace with your email address
+    pass: 'fs?jN8YJ9URvW_*' // Replace with your email password
   }
 });
 
@@ -26,7 +28,7 @@ app.post('/send-email', (req, res) => {
 
   // Configure the email details
   const mailOptions = {
-    from: 'QDATA <qdata.app@gmail.com>',
+    from: 'QDATA <support@qdata.com.ng>',
     to: recipient,
     subject: subject,
     html: message
@@ -48,4 +50,3 @@ app.post('/send-email', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
