@@ -9,7 +9,9 @@ const port = 3000;
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.hostinger.com', // Replace with your Hostinger SMTP server
+  port: 587, // or the port provided by your hosting service
+  secure: false, // true for 465, false for other ports
   auth: {
     user: 'support@qdata.com.ng', // Replace with your email address
     pass: 'fs?jN8YJ9URvW_*' // Replace with your email password
