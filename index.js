@@ -9,28 +9,24 @@ const port = 3000;
 // Create a transporter for Titan Email
 const transporter = nodemailer.createTransport({
   host: 'smtp.titan.email',
-  port: 465, // Use 587 for STARTTLS
-  secure: true, // Use false for STARTTLS
+  port: 587, // Use 587 for STARTTLS
+  secure: false, // Use false for STARTTLS
   auth: {
     user: 'support@qdata.com.ng', // Replace with your email address
     pass: 'fs?jN8YJ9URvW_*' // Replace with your email password
   }
 });
 
-// Verify the transporter before starting the server
+// Place the transporter.verify() call here, right after creating the transporter
 transporter.verify((error, success) => {
     if (error) {
         console.log(error);
         // Handle errors as needed, e.g., display an error message to the user
-        process.exit(1); // Exit the application if verification fails
     } else {
         console.log('Server is ready to send emails');
-        // Start the server only if the transporter is verified
-        app.listen(port, () => {
-          console.log(`Server running on port ${port}`);
-        });
     }
 });
+
 
 // Use the body-parser middleware
 app.use(bodyParser.json());
@@ -59,4 +55,9 @@ app.post('/send-email', (req, res) => {
       res.send('Email sent successfully');
     }
   });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
