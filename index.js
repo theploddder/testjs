@@ -9,7 +9,7 @@ const port = 3000;
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
-  host: 'smtp.hostinger.com',
+  host: "smtp.titan.email",
   port: 465,
   secure: true, // Corrected option for secure connection
   auth: {
@@ -36,7 +36,7 @@ app.post('/send-email', (req, res) => {
 
   // Configure the email details
   const mailOptions = {
-    from: 'support@qdata.com.ng',
+    from: 'QDATA <support@qdata.com.ng>',
     to: recipient,
     subject: subject,
     html: message
