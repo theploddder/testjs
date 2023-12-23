@@ -11,7 +11,7 @@ const port = 3000;
 const transporter = nodemailer.createTransport({
   host: 'smtp.hostinger.com',
   port: 465,
-  secure: false, // Corrected option for secure connection
+  secure: true, // Corrected option for secure connection
   auth: {
     user: 'support@qdata.com.ng',
     pass: 'fs?jN8YJ9URvW_*'
