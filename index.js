@@ -51,4 +51,3 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
-i don't want to strart any server i just want to send the email
