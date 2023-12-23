@@ -15,6 +15,7 @@ const transporter = nodemailer.createTransport({
     user: 'support@qdata.com.ng',
     pass: 'fs?jN8YJ9URvW_*'
   }
+  logger: true, // Enable logging
 });
 
 // Use the body-parser middleware
@@ -37,7 +38,7 @@ app.post('/send-email', (req, res) => {
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log(error);
+      console.log("error: " + error);
       res.status(500).send('Error sending email');
     } else {
       console.log('Email sent: ' + info.response);
