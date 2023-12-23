@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 4000;
+const port = 3000;
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
      ciphers: "SSLv3",
   },
   requireTLS: true,
-  port: 465,
+  port: 2525,
   debug: true,
   connectionTimeout: 10000,
   auth: {
