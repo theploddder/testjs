@@ -2,19 +2,19 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
-const cors = require('cors'); // Import the cors middleware
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
 // Create a transporter
 const transporter = nodemailer.createTransport({
-  host: 'smtp.hostinger.com', // Replace with your Hostinger SMTP server
-  port: 465, // or the port provided by your hosting service
-  true: false, // true for 465, false for other ports
+  host: 'smtp.hostinger.com',
+  port: 465,
+  secure: false, // Corrected option for secure connection
   auth: {
-    user: 'support@qdata.com.ng', // Replace with your email address
-    pass: 'fs?jN8YJ9URvW_*' // Replace with your email password
+    user: 'support@qdata.com.ng',
+    pass: 'fs?jN8YJ9URvW_*'
   }
 });
 
@@ -24,12 +24,19 @@ app.use(bodyParser.json());
 // Enable CORS for all routes
 app.use(cors());
 
+// CORS headers middleware
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Adjust as needed for security
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.post('/send-email', (req, res) => {
   const { recipient, subject, message } = req.body;
 
   // Configure the email details
   const mailOptions = {
-    from: 'support@qdata.com.ng', // Replace with your email address
+    from: 'support@qdata.com.ng',
     to: recipient,
     subject: subject,
     html: message
