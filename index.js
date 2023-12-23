@@ -9,7 +9,7 @@ const port = 3000;
 // Create a transporter
 const transporter = nodemailer.createTransport({
   host: 'smtp.titan.email',
-  port: 587,
+  port: 465,
   secure: true,
   auth: {
     user: 'support@qdata.com.ng',
