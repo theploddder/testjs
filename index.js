@@ -17,16 +17,20 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Place the transporter.verify() call here, right after creating the transporter
+// Verify the transporter before starting the server
 transporter.verify((error, success) => {
     if (error) {
         console.log(error);
         // Handle errors as needed, e.g., display an error message to the user
+        process.exit(1); // Exit the application if verification fails
     } else {
         console.log('Server is ready to send emails');
+        // Start the server only if the transporter is verified
+        app.listen(port, () => {
+          console.log(`Server running on port ${port}`);
+        });
     }
 });
-
 
 // Use the body-parser middleware
 app.use(bodyParser.json());
@@ -55,9 +59,4 @@ app.post('/send-email', (req, res) => {
       res.send('Email sent successfully');
     }
   });
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
 });
